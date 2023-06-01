@@ -1,11 +1,14 @@
 import requests
 import json
+from unidecode import unidecode
 
 def obtener_clima(ciudad):
     API_KEY = '5e9299c3f9207287280f06c6a59859c6'
     
     texto_limpio = ciudad.replace("clima" or "Clima", "")
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={texto_limpio}&appid={API_KEY}&units=metric"
+    texto_sin_tilde = unidecode(texto_limpio)
+
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={texto_sin_tilde}&appid={API_KEY}&units=metric"
 
     response = requests.get(url)
     data = response.json()
@@ -23,5 +26,7 @@ def obtener_clima(ciudad):
     print(f"Longitud: {longitud}")
     print(f"Descripción: {descripcion}")
     print(f"País: {pais}")
+
+
 
 
