@@ -1,16 +1,16 @@
 import speech_recognition as spr
 
+r = spr.Recognizer()
+
 def obtener_audio():
-    r = spr.Recognizer()
-    with spr.Microphone() as source:
+    with spr.Microphone() as mic:
         print("Habla ahora...")
-        r.adjust_for_ambient_noise(source)
-        audio = r.listen(source)
+        r.adjust_for_ambient_noise(mic)
+        audio = r.listen(mic)
     return audio    
 
 def reconocer_texto(audio):
     try:
-        r = spr.Recognizer()
         print("Procesando audio...")
         texto = r.recognize_google(audio, language="es")
         print("Texto reconocido:", texto)
