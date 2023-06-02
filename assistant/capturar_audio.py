@@ -5,7 +5,6 @@ r = spr.Recognizer()
 def obtener_audio():
     with spr.Microphone() as mic:
         print("Habla ahora...")
-        r.adjust_for_ambient_noise(mic)
         audio = r.listen(mic)
     return audio    
 
