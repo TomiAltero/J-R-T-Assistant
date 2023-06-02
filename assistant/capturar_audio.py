@@ -2,9 +2,9 @@ import speech_recognition as spr
 
 def obtener_audio():
     r = spr.Recognizer()
-    with spr.Microphone() as source:
+    with spr.Microphone() as mic:
         print("Habla ahora...")
-        audio = r.listen(source)
+        audio = r.listen(mic)
     return audio    
 
 def reconocer_texto(audio):
